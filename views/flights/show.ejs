@@ -9,6 +9,18 @@
     </a>
     <div>Airline: <%= flight.airline %></div>
     <div>Airport: <%= flight.airport %></div>
+    <ul>
+      <% flight.ticketInfo.forEach(ticketPrice => { %>
+        <li><%= ticketPrice.price %></li>
+      <% }) %>
+    </ul>
+    <form action="/flights//tickets" method="POST">
+      <label for="ticket-input">Ticket:</label>
+      <input name="seat" required pattern="[A-F][1-9]\d?"   id="ticket-input">
+      <label for="price-input">Price:</label>
+      <input type="number" min="0" id="price-input">
+      <button type="submit">Add Ticket</button>
+    </form>
     <div>Flight Number: <%= flight.flightNo %></div>
     <div>Departure: <%= flight.departs %></div>
   </div>

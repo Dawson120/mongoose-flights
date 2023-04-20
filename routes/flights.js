@@ -9,6 +9,7 @@ router.get('/:flightId', flightsCtrl.show)
 router.post('/', flightsCtrl.create)
 router.get('/:flightId/edit', flightsCtrl.edit)
 router.put('/:flightId', flightsCtrl.update)
+// router.post('/:flightId/tickets', ticketsCtrl.addToCast)
 router.delete('/:flightId', flightsCtrl.delete)
 
 export { router }
