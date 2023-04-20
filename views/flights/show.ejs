@@ -14,7 +14,7 @@
         <li><%= ticketPrice.price %></li>
       <% }) %>
     </ul>
-    <form action="/flights//tickets" method="POST">
+    <form action="/flights/<%= flight._id %>/tickets" method="POST">
       <label for="ticket-input">Ticket:</label>
       <input name="seat" required pattern="[A-F][1-9]\d?"   id="ticket-input">
       <label for="price-input">Price:</label>
