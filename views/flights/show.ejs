@@ -2,25 +2,30 @@
 <%- include('../partials/nav') %>
 
 <main>    
-  <h1><%= flight.title %></h1>
+  <h1><%= title %></h1>
   <div>
     <a href="/flights/<%= flight._id %>/edit">
       <button>Edit Flight</button>
     </a>
     <div>Airline: <%= flight.airline %></div>
     <div>Airport: <%= flight.airport %></div>
-    <ul>
-      <% flight.ticketInfo.forEach(ticketPrice => { %>
-        <li><%= ticketPrice.price %></li>
-      <% }) %>
-    </ul>
     <form action="/flights/<%= flight._id %>/tickets" method="POST">
       <label for="ticket-input">Ticket:</label>
       <input name="seat" required pattern="[A-F][1-9]\d?"   id="ticket-input">
       <label for="price-input">Price:</label>
-      <input type="number" min="0" id="price-input">
+      <input name="price" min="0" id="price-input">
       <button type="submit">Add Ticket</button>
     </form>
+    <Table>
+      <thead>Tickets:</thead>
+      <tbody>
+        <% flight.ticketInfo.forEach(function (ticket) { %>
+          <tr>  
+          <td>Seat Number: <strong><%= ticket.seat %></strong> Price: <strong>$<%= ticket.price %></strong></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </Table>
     <div>Flight Number: <%= flight.flightNo %></div>
     <div>Departure: <%= flight.departs %></div>
   </div>

@@ -1,4 +1,5 @@
 import { Flight } from "../models/flight.js";
+// import { Meal } from "../models/meal.js";
 
 function newFlight (req, res) {
   res.render('flights/new', {
@@ -74,7 +75,22 @@ function update(req, res) {
 }
 
 function addTicket(req, res) {
-
+  Flight.findById(req.params.flightId)
+  .then(flight => {
+    flight.ticketInfo.push(req.body)
+    flight.save()
+    .then(() => {
+      res.redirect(`/flights/${flight._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
 }
 
 export {
