@@ -16,6 +16,24 @@
       <input name="price" min="0" id="price-input">
       <button type="submit">Add Ticket</button>
     </form>
+    <form action="/flights/<%= flight._id %>/meals" method="POST">
+      <select name="mealId">
+      <% meals.forEach(function (meal) { %>
+        <option value="<%= meal._id %>">
+          <%= meal.name %>
+        </option>
+        <% }) %>
+      </select>
+      <button type="submit">Add Meal To Flight</button>
+    </form>
+    <h4>Meals on Flight:</h4>
+    <ul>
+      <% meals.forEach(function (meal) { %>
+        <li>
+          <%= meal.name %>
+        </li>
+        <% }) %>
+    </ul>
     <Table>
       <thead>Tickets:</thead>
       <tbody>

@@ -15,7 +15,18 @@ function newMeal (req, res) {
   })
 }
 
+function create(req, res) {
+  Meal.create(req.body)
+  .then (meal => {
+    res.redirect('/meals/new')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/flights')
+  })
+}
 
 export {
   newMeal as new,
+  create,
 }
