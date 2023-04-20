@@ -1,0 +1,33 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form action="/flights/<%= flight._id %>?_method=PUT" method="POST">
+  <label for="airline-input">
+    Airline ->
+  </label>
+  <select name="airline" id="airline-input">
+    <option value="American">American</option>
+    <option value="Southwest">Southwest</option>
+    <option value="United">United</option>
+  </select>
+  <label for="airline-input">
+    Airport ->
+  </label>
+  <select name="airport" id="airport-input">
+    <option value="DEN">DEN</option>
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+  </select>
+  <label for="flight-number-input">Flight # -></label>
+  <input type="number" name="flightNo" id="flight-number-input">
+  <label for="departs">Depart Date -></label>
+  <input type="date" name="departs" id="departs-input">
+  <button type="submit">Update Flight</button>
+  </form>
+</main>
+
+<%- include('../partials/footer') %>
